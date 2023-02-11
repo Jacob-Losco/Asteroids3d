@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 890907127157347312}
   m_Layer: 0
   m_Name: AsteroidMedium
-  m_TagString: AsteroidLittle
+  m_TagString: AsteroidMed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,3 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  despawnDistance: 150
+  speed: 4
+  dir: {x: 0, y: 0, z: 0}

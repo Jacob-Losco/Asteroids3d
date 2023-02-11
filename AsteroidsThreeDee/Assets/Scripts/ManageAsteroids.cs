@@ -41,7 +41,6 @@ public class ManageAsteroids : MonoBehaviour
         {
             GameObject asteroid = Instantiate(asteroids[c]);
             NewSpawn(asteroid);
-            RotationDrift(asteroid);
             asteroid.GetComponent<MoveDrift>().manager = this;
         }
     }
@@ -51,21 +50,6 @@ public class ManageAsteroids : MonoBehaviour
         
         //border spawn:
         obj.transform.position = pos + transform.position;
-    }
-    private void RotationDrift(GameObject obj)
-    {
-        Vector2 direction = DirectionDrift(obj);
-        obj.transform.Rotate(Vector3.forward, Vector2.Angle(Vector2.up, direction));
-    }
-    private Vector2 DirectionDrift(GameObject obj)
-    {
-        float tiltX = Random.Range(-8f, 8f);
-        float tiltY = Random.Range(-6f, 6f);
-        //drift toward center
-        Vector2 direction = new Vector2(-obj.transform.position.x + tiltX, -obj.transform.position.y + tiltY);
-        if (direction != Vector2.zero)
-            direction.Normalize();
-        return direction;
     }
 
 
