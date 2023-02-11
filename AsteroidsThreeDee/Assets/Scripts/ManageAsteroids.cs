@@ -50,7 +50,7 @@ public class ManageAsteroids : MonoBehaviour
         Vector3 pos = Random.onUnitSphere * Random.Range(minSpawnRadius, maxSpawnRadius);
         
         //border spawn:
-        obj.transform.position = this.transform.position + pos;
+        obj.transform.position = pos + transform.position;
     }
     private void RotationDrift(GameObject obj)
     {

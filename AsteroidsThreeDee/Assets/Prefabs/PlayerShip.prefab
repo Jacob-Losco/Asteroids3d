@@ -211,4 +211,7 @@ MonoBehaviour:
   maxSpawnRadius: 50
   asteroids:
   - {fileID: 3383871263452102688, guid: 29159454a709b40e187379ab0c633710, type: 3}
+  - {fileID: 4806195257381649495, guid: 8d1aff8cff322904aa0dda26cab6d016, type: 3}
+  - {fileID: 4806195257381649495, guid: 8d1aff8cff322904aa0dda26cab6d016, type: 3}
+  - {fileID: 4806195257381649495, guid: 2708c417e372d4d5bbfc675588aa3705, type: 3}
   - {fileID: 4806195257381649495, guid: 2708c417e372d4d5bbfc675588aa3705, type: 3}
