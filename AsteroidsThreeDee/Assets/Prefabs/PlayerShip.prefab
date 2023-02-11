@@ -105,9 +105,10 @@ GameObject:
   - component: {fileID: 8686569214251107021}
   - component: {fileID: 1653446383563986069}
   - component: {fileID: 2651044424273381093}
+  - component: {fileID: 1253294626}
   m_Layer: 0
-  m_Name: RearVuewR
-  m_TagString: MainCamera
+  m_Name: RearViewR
+  m_TagString: Mirror
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +138,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -179,6 +180,19 @@ Skybox:
   m_GameObject: {fileID: 3710160900276790575}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 1a4c2d78aace5db4ba5f6fcc2bea8b99, type: 2}
+--- !u!114 &1253294626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710160900276790575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1b1c448a590bf419a3e7d3f7204d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipHorizontal: 1
 --- !u!1 &6180562890196920760
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,9 +204,10 @@ GameObject:
   - component: {fileID: 115954611524616152}
   - component: {fileID: 3380395764939035525}
   - component: {fileID: 6451260097763982190}
+  - component: {fileID: 1612949095}
   m_Layer: 0
   m_Name: RearViewL
-  m_TagString: MainCamera
+  m_TagString: Mirror
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +279,19 @@ Skybox:
   m_GameObject: {fileID: 6180562890196920760}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 1a4c2d78aace5db4ba5f6fcc2bea8b99, type: 2}
+--- !u!114 &1612949095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6180562890196920760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1b1c448a590bf419a3e7d3f7204d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipHorizontal: 1
 --- !u!1 &8538723738417603904
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +460,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0, g: 0.8721261, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 4
   m_Range: 100
   m_SpotAngle: 90
   m_InnerSpotAngle: 1

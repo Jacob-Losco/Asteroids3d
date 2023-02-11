@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - RearView
   - AsteroidMed
+  - Mirror
   layers:
   - Default
   - TransparentFX
