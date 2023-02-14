@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 890907127157347312}
   m_Layer: 0
   m_Name: AsteroidMedium
-  m_TagString: AsteroidMed
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806195257381649495}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -114,3 +114,4 @@ MonoBehaviour:
   despawnDistance: 150
   speed: 4
   dir: {x: 0, y: 0, z: 0}
+  size: 2

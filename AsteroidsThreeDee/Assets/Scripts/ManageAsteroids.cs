@@ -41,7 +41,7 @@ public class ManageAsteroids : MonoBehaviour
         {
             GameObject asteroid = Instantiate(asteroids[c]);
             NewSpawn(asteroid);
-            asteroid.GetComponent<MoveDrift>().manager = this;
+            asteroid.GetComponent<AsteroidMove>().manager = this;
         }
     }
     private void NewSpawn(GameObject obj)
