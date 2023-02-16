@@ -45,9 +45,7 @@ public class ManageAsteroids : MonoBehaviour
     private void NewSpawn(GameObject obj)
     {
         Vector3 pos = Random.onUnitSphere * Random.Range(minSpawnRadius, maxSpawnRadius) ;
-
-        //border spawn:
-        obj.transform.position = pos + transform.position;
+        obj.transform.position = pos + transform.position + transform.forward*(maxSpawnRadius/rearCulling);
     }
 
 
@@ -55,7 +53,7 @@ public class ManageAsteroids : MonoBehaviour
     void Update()
     {
         float density = Mathf.Pow(Mathf.Max(maxSpawnRadius - minSpawnRadius, 1) * spawnDensity, 3)*Mathf.PI*(4/3);
-        if (spawnRate != 0) _spawnRate = (1 / (spawnRate + (density)));
+        if (spawnRate != 0) _spawnRate = 1 / Mathf.Pow(spawnRate + density,2);
         //scoreText.text = "Score: " + gameScore.ToString();
 
         float delta = Time.time - lastSpawn;
