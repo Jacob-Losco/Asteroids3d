@@ -45,7 +45,7 @@ public class AsteroidMove : MonoBehaviour
     IEnumerator Despawn()
     {
         yield return new WaitForSeconds(Random.Range(0,5)); //delay despawn if player returns 
-        if (despawning) Destroy(this.gameObject);
+        if (despawning) { Destroy(this.gameObject); manager.AsteroidDestroyed(); }
         else despawning = false;
     }
 

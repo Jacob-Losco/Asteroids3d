@@ -11,6 +11,8 @@ public class ManageAsteroids : MonoBehaviour
     private float _spawnRate = 1;
     public float minSpawnRadius = 10;
     public float maxSpawnRadius = 50;
+    public int maxNumAsteroids = 500;
+    private int numAsteroids = 0;
     public float rearCulling = 100;
     //public int level = 1;
     //public float levelRate = 5; // level changes once every levelRate seconds
@@ -37,6 +39,7 @@ public class ManageAsteroids : MonoBehaviour
         if (c < asteroids.Count && c >= 0)
         {
             GameObject asteroid = Instantiate(asteroids[c]);
+            numAsteroids++;
             NewSpawn(asteroid);
             asteroid.GetComponent<AsteroidMove>().manager = this;
         }
@@ -47,7 +50,10 @@ public class ManageAsteroids : MonoBehaviour
         Vector3 pos = Random.onUnitSphere * Random.Range(minSpawnRadius, maxSpawnRadius) ;
         obj.transform.position = pos + transform.position + transform.forward*(maxSpawnRadius/rearCulling);
     }
-
+    public void AsteroidDestroyed()
+    {
+        numAsteroids--;
+    }
 
     // Update is called once per frame
     void Update()
@@ -62,7 +68,7 @@ public class ManageAsteroids : MonoBehaviour
             lastSpawn = Time.time;
             for (int i = 0; i < spawnNum; i++)
             {
-                if (asteroids.Count > 0)
+                if (asteroids.Count > 0 && numAsteroids < maxNumAsteroids)
                     StartCoroutine(SpawnAsteroid());
             }
         }
