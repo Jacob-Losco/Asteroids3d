@@ -688,14 +688,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4763909812552992763, guid: 49035c69c226546398c9484dde19f959, type: 3}
-      propertyPath: spawnRate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763909812552992763, guid: 49035c69c226546398c9484dde19f959, type: 3}
-      propertyPath: despawnRadius
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 5545367997950991510, guid: 49035c69c226546398c9484dde19f959, type: 3}
       propertyPath: m_RootOrder
       value: 0

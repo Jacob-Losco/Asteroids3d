@@ -50,7 +50,7 @@ public class ShipMovement : MonoBehaviour
         transform.Rotate(pitch, yaw, 0);
     }
     
-    void Move() {
+    void Move() { 
         transform.position += transform.forward * moveSpeed * Time.deltaTime * moving;
     }
 }
