@@ -5,14 +5,24 @@ using UnityEngine;
 public class ShipMovement : MonoBehaviour
 {
     public float turnSpeed = 60f;
-    public float moveSpeed = 45f;
+    public float moveSpeed = 25f;
+    public GameObject bullet;
     
+    private float actualSpeed = 0;
+    private Vector3 direction;
+    private float lerpConstant = 1f;
     private float yawing = 0;
     private float pitching = 0;
-    private float moving = 0;
+    private Rigidbody rb;
+    private GameObject leftShootPoint;
+    private GameObject rightShootPoint;
+    private bool inCoolDown = false;
+    
     void Start()
     {
-    
+        rb = GetComponent<Rigidbody>();
+        leftShootPoint = GameObject.Find("LeftShootPoint");
+        rightShootPoint = GameObject.Find("RightShootPoint");
     }
 
     // Update is called once per frame
@@ -34,10 +44,8 @@ public class ShipMovement : MonoBehaviour
             pitching = 0;
         }
         
-        if(Input.GetKey("space")) {
-            moving = 1;
-        } else {
-            moving = 0;
+        if(Input.GetMouseButtonDown(0)) {
+            Shoot();
         }
     
         Turn();
@@ -50,7 +58,38 @@ public class ShipMovement : MonoBehaviour
         transform.Rotate(pitch, yaw, 0);
     }
     
-    void Move() { 
-        transform.position += transform.forward * moveSpeed * Time.deltaTime * moving;
+    void Move() {
+        Vector3 inputVelocity = GetInput();
+        direction += inputVelocity;
+        Vector3.ClampMagnitude(direction, .01f);
+        direction += Vector3.Lerp(direction, Vector3.zero, lerpConstant);
+        transform.position = new Vector3(direction.x, direction.y, direction.z);
+    }
+    
+    void Shoot() {
+        inCoolDown = true;
+        GameObject leftBullet = Instantiate(bullet);
+        GameObject rightBullet = Instantiate(bullet);
+        leftBullet.transform.position = leftShootPoint.transform.position;
+        leftBullet.transform.rotation = leftShootPoint.transform.rotation;
+        rightBullet.transform.position = rightShootPoint.transform.position;
+        rightBullet.transform.rotation = rightShootPoint.transform.rotation;
+        
+        StartCoroutine(CoolDown());
+    }
+    
+    IEnumerator CoolDown() {
+        yield return new WaitForSeconds(.4f);
+        inCoolDown = false;
+    }
+    
+    private Vector3 GetInput() {
+        actualSpeed = 0;
+        if (Input.GetKey("space")) {
+            actualSpeed += moveSpeed;
+        }
+        
+        Vector3 tempVelocity = actualSpeed * transform.forward * Time.deltaTime;
+        return tempVelocity;
     }
 }

@@ -73,5 +73,9 @@ public class AsteroidMove : MonoBehaviour
             Debug.Log("PlayerHit");
             ShipMovement src = obj.GetComponent<ShipMovement>();
         }
+        if (obj.tag == "Bullet") {
+            Destroy(obj.gameObject);
+            Destroy(this.gameObject);
+        }
     }
 }
