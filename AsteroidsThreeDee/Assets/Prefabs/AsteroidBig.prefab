@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8843125337548196646}
   m_Layer: 0
   m_Name: AsteroidBig
-  m_TagString: Asteroid
+  m_TagString: AsteroidBig
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   speed: 2
   dir: {x: 0, y: 0, z: 0}
   size: 3
+  spinSpeed: 1
   locked: 0
 --- !u!54 &8843125337548196646
 Rigidbody:

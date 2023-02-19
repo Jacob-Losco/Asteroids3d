@@ -45,7 +45,7 @@ public class AsteroidMove : MonoBehaviour
     IEnumerator Despawn()
     {
         yield return new WaitForSeconds(Random.Range(0,5)); //delay despawn if player returns 
-        if (despawning) { Destroy(this.gameObject); manager.AsteroidDestroyed(); }
+        if (despawning) { Destroy(this.gameObject); manager.decrementAsteroid(); }
         else despawning = false;
     }
 
@@ -61,7 +61,7 @@ public class AsteroidMove : MonoBehaviour
 
         GameObject obj = other.gameObject;
         Vector3 diff = (this.transform.position-other.transform.position).normalized;
-        if (obj.tag == "Asteroid")
+        if (obj.tag == "AsteroidBig" || obj.tag == "AsteroidMed" || obj.tag == "AsteroidLittle")
         {
             AsteroidMove src = obj.GetComponent<AsteroidMove>();
             dir += diff;
@@ -75,6 +75,7 @@ public class AsteroidMove : MonoBehaviour
         }
         if (obj.tag == "Bullet") {
             Destroy(obj.gameObject);
+            manager.AsteroidDestroyed(this.transform.position, this.tag);
             Destroy(this.gameObject);
         }
     }

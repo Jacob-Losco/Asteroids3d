@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1596177492530802958}
   m_Layer: 0
   m_Name: AsteroidMedium
-  m_TagString: Asteroid
+  m_TagString: AsteroidMed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   speed: 6
   dir: {x: 0, y: 0, z: 0}
   size: 2
+  spinSpeed: 1
   locked: 0
 --- !u!54 &-1596177492530802958
 Rigidbody:

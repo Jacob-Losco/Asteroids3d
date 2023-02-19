@@ -17,7 +17,8 @@ public class ManageAsteroids : MonoBehaviour
     //public int level = 1;
     //public float levelRate = 5; // level changes once every levelRate seconds
     public List<GameObject> asteroids;
-
+    public GameObject asteroidMed;
+    public GameObject asteroidLittle;
     private float lastSpawn;
 
 
@@ -50,9 +51,30 @@ public class ManageAsteroids : MonoBehaviour
         Vector3 pos = Random.onUnitSphere * Random.Range(minSpawnRadius, maxSpawnRadius) ;
         obj.transform.position = pos + transform.position + transform.forward*(maxSpawnRadius/rearCulling);
     }
-    public void AsteroidDestroyed()
-    {
+    
+    public void decrementAsteroid() {
         numAsteroids--;
+    }
+    
+    public void AsteroidDestroyed(Vector3 oldAsteroidPosition, string oldAsteroidSize)
+    {
+        if(oldAsteroidSize == "AsteroidBig") {
+            decrementAsteroid();
+            GameObject newAsteroidOne = Instantiate(asteroidMed);
+            newAsteroidOne.transform.position = oldAsteroidPosition;
+            newAsteroidOne.GetComponent<AsteroidMove>().manager = this;
+            GameObject newAsteroidTwo = Instantiate(asteroidMed);
+            newAsteroidTwo.transform.position = oldAsteroidPosition;
+            newAsteroidTwo.GetComponent<AsteroidMove>().manager = this;
+        }
+        if(oldAsteroidSize == "AsteroidMed") {
+            GameObject newAsteroidOne = Instantiate(asteroidLittle);
+            newAsteroidOne.transform.position = oldAsteroidPosition;
+            newAsteroidOne.GetComponent<AsteroidMove>().manager = this;
+            GameObject newAsteroidTwo = Instantiate(asteroidLittle);
+            newAsteroidTwo.transform.position = oldAsteroidPosition;
+            newAsteroidTwo.GetComponent<AsteroidMove>().manager = this;
+        }
     }
 
     // Update is called once per frame
