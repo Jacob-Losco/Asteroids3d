@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 86b8e773f859f46a59f619a236816610, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -446,7 +446,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 86b8e773f859f46a59f619a236816610, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -900,6 +900,8 @@ MonoBehaviour:
   - {fileID: 4806195257381649495, guid: 2708c417e372d4d5bbfc675588aa3705, type: 3}
   - {fileID: 4806195257381649495, guid: 2708c417e372d4d5bbfc675588aa3705, type: 3}
   - {fileID: 4806195257381649495, guid: 2708c417e372d4d5bbfc675588aa3705, type: 3}
+  asteroidMed: {fileID: 0}
+  asteroidLittle: {fileID: 0}
 --- !u!114 &615849145989859325
 MonoBehaviour:
   m_ObjectHideFlags: 0
