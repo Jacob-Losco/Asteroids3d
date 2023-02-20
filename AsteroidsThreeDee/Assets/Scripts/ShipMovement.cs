@@ -10,7 +10,7 @@ public class ShipMovement : MonoBehaviour
     
     private float actualSpeed = 0;
     private Vector3 direction;
-    private float lerpConstant = 1f;
+    public float lerpConstant = 1f;
     private float yawing = 0;
     private float pitching = 0;
     private Rigidbody rb;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SplashManager : MonoBehaviour
 {
+    public UnityEngine.UI.Button button;
     // Start is called before the first frame update
     void Start()
     {
