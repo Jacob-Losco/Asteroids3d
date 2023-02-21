@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Jacob Losco
 public class ShipMovement : MonoBehaviour
 {
     public float turnSpeed = 60f;
     public float moveSpeed = 25f;
+    public float maxSpeed = 90f;
     public GameObject bullet;
     
     private float actualSpeed = 0;
@@ -59,11 +61,12 @@ public class ShipMovement : MonoBehaviour
     }
     
     void Move() {
-        Vector3 inputVelocity = GetInput();
-        direction += inputVelocity;
-        Vector3.ClampMagnitude(direction, .01f);
-        direction += Vector3.Lerp(direction, Vector3.zero, lerpConstant);
-        transform.position = new Vector3(direction.x, direction.y, direction.z);
+        direction += GetInput();
+        direction = Vector3.ClampMagnitude(direction, maxSpeed);
+        direction = Vector3.Lerp(direction, Vector3.zero, lerpConstant);
+        //direction += Vector3.Lerp(direction, Vector3.zero, lerpConstant);
+        transform.position += new Vector3(direction.x, direction.y, direction.z);
+
     }
     
     void Shoot() {
@@ -88,8 +91,6 @@ public class ShipMovement : MonoBehaviour
         if (Input.GetKey("space")) {
             actualSpeed += moveSpeed;
         }
-        
-        Vector3 tempVelocity = actualSpeed * transform.forward * Time.deltaTime;
-        return tempVelocity;
+        return actualSpeed * Time.deltaTime * transform.forward;
     }
 }

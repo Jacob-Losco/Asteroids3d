@@ -20,6 +20,7 @@ public class ManageAsteroids : MonoBehaviour
     public GameObject asteroidMed;
     public GameObject asteroidLittle;
     private float lastSpawn;
+    public int score;
 
 
     void Start()
@@ -58,22 +59,31 @@ public class ManageAsteroids : MonoBehaviour
     
     public void AsteroidDestroyed(Vector3 oldAsteroidPosition, string oldAsteroidSize)
     {
+        
         if(oldAsteroidSize == "AsteroidBig") {
+            score += 200;
             decrementAsteroid();
-            GameObject newAsteroidOne = Instantiate(asteroidMed);
-            newAsteroidOne.transform.position = oldAsteroidPosition;
-            newAsteroidOne.GetComponent<AsteroidMove>().manager = this;
-            GameObject newAsteroidTwo = Instantiate(asteroidMed);
-            newAsteroidTwo.transform.position = oldAsteroidPosition;
-            newAsteroidTwo.GetComponent<AsteroidMove>().manager = this;
+            int spawn = Random.Range(2, 4);
+            for (int i = 0; i < spawn; i++)
+            {
+                GameObject newAsteroidOne = Instantiate(asteroidMed);
+                newAsteroidOne.transform.position = oldAsteroidPosition;
+                newAsteroidOne.GetComponent<AsteroidMove>().manager = this;
+            }
         }
-        if(oldAsteroidSize == "AsteroidMed") {
-            GameObject newAsteroidOne = Instantiate(asteroidLittle);
-            newAsteroidOne.transform.position = oldAsteroidPosition;
-            newAsteroidOne.GetComponent<AsteroidMove>().manager = this;
-            GameObject newAsteroidTwo = Instantiate(asteroidLittle);
-            newAsteroidTwo.transform.position = oldAsteroidPosition;
-            newAsteroidTwo.GetComponent<AsteroidMove>().manager = this;
+        else if(oldAsteroidSize == "AsteroidMed") {
+            score += 100;
+            int spawn = Random.Range(2, 5);
+            for (int i = 0; i < spawn; i++)
+            {
+                GameObject newAsteroidOne = Instantiate(asteroidLittle);
+                newAsteroidOne.transform.position = oldAsteroidPosition;
+                newAsteroidOne.GetComponent<AsteroidMove>().manager = this;
+            }
+        }
+        else
+        {
+            score += 50;
         }
     }
 

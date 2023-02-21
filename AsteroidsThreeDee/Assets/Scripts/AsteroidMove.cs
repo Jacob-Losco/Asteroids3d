@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//David Richman
 public class AsteroidMove : MonoBehaviour
 {
     public ManageAsteroids manager;
