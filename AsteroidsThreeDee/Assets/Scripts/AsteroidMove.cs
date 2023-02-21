@@ -72,12 +72,15 @@ public class AsteroidMove : MonoBehaviour
         }
         if (obj.tag == "Player")
         {
-            Debug.Log("PlayerHit");
+            if(!impact.isPlaying) {
+                impact.Play();
+            }
             ShipMovement src = obj.GetComponent<ShipMovement>();
         }
         if (obj.tag == "Bullet") {
-            impact.Play();
-            Debug.Log(impact);
+            if(!impact.isPlaying) {
+                impact.Play();
+            }
             manager.AsteroidDestroyed(this.transform.position, this.tag);
             Destroy(this.gameObject);
         }
