@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//David Richman (Particles by Jacob)
+
 public class ManageAsteroids : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -20,7 +22,7 @@ public class ManageAsteroids : MonoBehaviour
     public GameObject asteroidMed;
     public GameObject asteroidLittle;
     private float lastSpawn;
-    public int score;
+    private StatsManager stats;
 
 
     void Start()
@@ -32,6 +34,7 @@ public class ManageAsteroids : MonoBehaviour
         if (asteroids.Count == 0)
             return;
         lastSpawn = Time.time - spawnRate;
+        stats = GetComponent<StatsManager>();
         
     }
     private IEnumerator SpawnAsteroid()
@@ -61,7 +64,7 @@ public class ManageAsteroids : MonoBehaviour
     {
         
         if(oldAsteroidSize == "AsteroidBig") {
-            score += 200;
+            stats.IncrementScore(30);
             decrementAsteroid();
             int spawn = Random.Range(2, 4);
             for (int i = 0; i < spawn; i++)
@@ -72,7 +75,7 @@ public class ManageAsteroids : MonoBehaviour
             }
         }
         else if(oldAsteroidSize == "AsteroidMed") {
-            score += 100;
+            stats.IncrementScore(10);
             int spawn = Random.Range(2, 5);
             for (int i = 0; i < spawn; i++)
             {
@@ -83,7 +86,7 @@ public class ManageAsteroids : MonoBehaviour
         }
         else
         {
-            score += 50;
+            stats.IncrementScore(5);
         }
     }
 

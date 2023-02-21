@@ -19,15 +19,22 @@ public class SplashManager : MonoBehaviour
     {
         if (!buttonSound.isPlaying)
             buttonSound.Play();
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitUntil(isNotPlaying);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         Debug.Log(Time.time);
+    }
+    bool isNotPlaying()
+    {
+        return !buttonSound.isPlaying;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        {
+            StartGame();
+        }
     }
     
 }

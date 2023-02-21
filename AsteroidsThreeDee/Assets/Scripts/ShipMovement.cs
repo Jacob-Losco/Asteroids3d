@@ -19,15 +19,15 @@ public class ShipMovement : MonoBehaviour
     private GameObject leftShootPoint;
     private GameObject rightShootPoint;
     private bool inCoolDown = false;
-    private ParticleSystem leftSmoke = GameObject.Find("leftSmoke").GetComponent<ParticleSystem>();
-    private ParticleSystem rightSmoke = GameObject.Find("rightSmoke").GetComponent<ParticleSystem>();
+    private ParticleSystem leftSmoke;
+    private ParticleSystem rightSmoke;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         leftShootPoint = GameObject.Find("LeftShootPoint");
         rightShootPoint = GameObject.Find("RightShootPoint");
-            leftSmoke = GameObject.Find("leftSmoke").GetComponent<ParticleSystem>();
+        leftSmoke = GameObject.Find("leftSmoke").GetComponent<ParticleSystem>();
         rightSmoke = GameObject.Find("rightSmoke").GetComponent<ParticleSystem>();
     }
 
@@ -50,7 +50,7 @@ public class ShipMovement : MonoBehaviour
             pitching = 0;
         }
         
-        if(Input.GetMouseButtonDown(0) && !inCoolDown) {
+        if((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)&& !inCoolDown) {
             Shoot();
         }
     
@@ -75,8 +75,11 @@ public class ShipMovement : MonoBehaviour
     
     void Shoot() {
         inCoolDown = true;
-        leftSmoke.Play();
-        rightSmoke.Play();
+        if (!leftSmoke.isPlaying)
+        {
+            leftSmoke.Play();
+            rightSmoke.Play();
+        }
         GameObject leftBullet = Instantiate(bullet);
         GameObject rightBullet = Instantiate(bullet);
         leftBullet.transform.position = leftShootPoint.transform.position;
@@ -88,7 +91,7 @@ public class ShipMovement : MonoBehaviour
     }
     
     IEnumerator CoolDown() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
         inCoolDown = false;
     }
     

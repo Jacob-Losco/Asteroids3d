@@ -73,17 +73,25 @@ public class AsteroidMove : MonoBehaviour
         }
         if (obj.tag == "Player")
         {
-            if(!impact.isPlaying) {
-                impact.Play();
+            if (!impact.isPlaying)
+            {
+                impact.PlayOneShot(impact.clip);
             }
-            ShipMovement src = obj.GetComponent<ShipMovement>();
+            StatsManager src = obj.GetComponent<StatsManager>();
+            src.health -= 10 * size;
         }
         if (obj.tag == "Bullet") {
             if(!impact.isPlaying) {
-                impact.Play();
+                impact.PlayOneShot(impact.clip);
             }
             manager.AsteroidDestroyed(this.transform.position, this.tag);
             Destroy(this.gameObject);
         }
+    }
+    IEnumerator yieldDestroy()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        Destroy(gameObject);
     }
 }
