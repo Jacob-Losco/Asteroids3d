@@ -17,12 +17,16 @@ public class ShipMovement : MonoBehaviour
     private GameObject leftShootPoint;
     private GameObject rightShootPoint;
     private bool inCoolDown = false;
+    private ParticleSystem leftSmoke = GameObject.Find("leftSmoke").GetComponent<ParticleSystem>();
+    private ParticleSystem rightSmoke = GameObject.Find("rightSmoke").GetComponent<ParticleSystem>();
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         leftShootPoint = GameObject.Find("LeftShootPoint");
         rightShootPoint = GameObject.Find("RightShootPoint");
+            leftSmoke = GameObject.Find("leftSmoke").GetComponent<ParticleSystem>();
+        rightSmoke = GameObject.Find("rightSmoke").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -44,7 +48,7 @@ public class ShipMovement : MonoBehaviour
             pitching = 0;
         }
         
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0) && !inCoolDown) {
             Shoot();
         }
     
@@ -68,6 +72,8 @@ public class ShipMovement : MonoBehaviour
     
     void Shoot() {
         inCoolDown = true;
+        leftSmoke.Play();
+        rightSmoke.Play();
         GameObject leftBullet = Instantiate(bullet);
         GameObject rightBullet = Instantiate(bullet);
         leftBullet.transform.position = leftShootPoint.transform.position;
@@ -79,7 +85,7 @@ public class ShipMovement : MonoBehaviour
     }
     
     IEnumerator CoolDown() {
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(2f);
         inCoolDown = false;
     }
     

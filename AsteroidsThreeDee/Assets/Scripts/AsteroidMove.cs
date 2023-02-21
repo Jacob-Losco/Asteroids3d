@@ -12,9 +12,12 @@ public class AsteroidMove : MonoBehaviour
     private Vector3 spinAxis;
     public bool locked = false; //used for testing only!
     private bool despawning = false;
+    private AudioSource impact;
+    
     // Start is called before the first frame update
     void Start()
     {
+        impact = GetComponent<AudioSource>();
         spinAxis = Random.onUnitSphere;
         if (!locked)
         {
@@ -66,7 +69,6 @@ public class AsteroidMove : MonoBehaviour
             AsteroidMove src = obj.GetComponent<AsteroidMove>();
             dir += diff;
             src.dir -= diff;
-            
         }
         if (obj.tag == "Player")
         {
@@ -74,7 +76,8 @@ public class AsteroidMove : MonoBehaviour
             ShipMovement src = obj.GetComponent<ShipMovement>();
         }
         if (obj.tag == "Bullet") {
-            Destroy(obj.gameObject);
+            impact.Play();
+            Debug.Log(impact);
             manager.AsteroidDestroyed(this.transform.position, this.tag);
             Destroy(this.gameObject);
         }
