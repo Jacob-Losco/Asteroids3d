@@ -50,7 +50,7 @@ public class ShipMovement : MonoBehaviour
             pitching = 0;
         }
         
-        if((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)&& !inCoolDown) {
+        if((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.LeftControl)&& !inCoolDown)) {
             Shoot();
         }
     
